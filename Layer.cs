@@ -32,8 +32,21 @@ public class Layer : MonoBehaviour
         return outputs;
     }
 
+    public void weightInit()
+    {
+        Random rng = new Random;
+        for(int currentNodeIn = 0; currentNodeIn < numNodesIn; currentNodeIn++)
+        {
+            for(int currentNodeOut = 0; currentNodeOut < numNodesOut; currentNodeOut++)
+            {
+                double rand = rng.NextDouble() * 2 - 1;
+                weights[currentNodeIn, currentNodeOut] = rand / Math.Sqrt(numNodesIn)
+            }
+        }
+    }
+
     public double Activation(double input)
     {
-        return 1 / 1 + Math.Pow(Math.E, -input);
-    }
+        //tanh
+        return (Math.Pow(Math.E, input) - Math.Pow(Math.E, -input)) / (Math.Pow(Math.E, input) + Math.Pow(Math.E, -input);
 }
